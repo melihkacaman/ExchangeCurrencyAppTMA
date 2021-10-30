@@ -1,4 +1,4 @@
-package Common;
+package common;
 
 import model.FavouriteCurrency;
 import org.json.simple.JSONArray;

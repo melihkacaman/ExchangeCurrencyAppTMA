@@ -1,4 +1,4 @@
-import Common.Currency;
+import common.Currency;
 import com.googlecode.lanterna.gui2.MultiWindowTextGUI;
 import com.googlecode.lanterna.gui2.WindowBasedTextGUI;
 import com.googlecode.lanterna.screen.Screen;

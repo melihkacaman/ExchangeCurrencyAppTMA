@@ -1,7 +1,7 @@
 package controller;
 
-import Common.Currency;
-import Common.Session;
+import common.Currency;
+import common.Session;
 import com.googlecode.lanterna.gui2.Button;
 import model.FavouriteCurrency;
 import model.User;
