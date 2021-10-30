@@ -2,8 +2,6 @@ package view;
 
 import com.googlecode.lanterna.gui2.*;
 import model.FavouriteCurrency;
-import model.User;
-
 import java.util.List;
 
 public class HomeWindow extends BasicWindow {
@@ -24,7 +22,7 @@ public class HomeWindow extends BasicWindow {
         contentPanel.addComponent(new Label("Favourite Currency:"));
         currencyList = new ComboBox<String>();
         for (FavouriteCurrency currency : currencies) {
-            String c = String.join(currency.getCode(), "-" + currency.getName());
+            String c = currency.getCode() + "-" + currency.getName();
             currencyList.addItem(c);
         }
         contentPanel.addComponent(currencyList);
