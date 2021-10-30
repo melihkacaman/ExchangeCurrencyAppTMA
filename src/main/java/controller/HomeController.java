@@ -30,7 +30,6 @@ public class HomeController {
             User activeUser = new User(100,name,favouriteCurrency);
             Session.activeUser = activeUser;
 
-            System.out.println(Session.activeUser.getName() + " " + Session.activeUser.getFavouriteCurrency().getName() + " " + Session.activeUser.getFavouriteCurrency().getCode());
             HomeController.this.homeWindow.close();
         }
     }

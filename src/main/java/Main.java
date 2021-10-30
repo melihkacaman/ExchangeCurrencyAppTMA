@@ -3,8 +3,10 @@ import com.googlecode.lanterna.gui2.MultiWindowTextGUI;
 import com.googlecode.lanterna.gui2.WindowBasedTextGUI;
 import com.googlecode.lanterna.screen.Screen;
 import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
+import controller.CurrencyController;
 import controller.HomeController;
 import model.User;
+import view.CurrencyWindow;
 import view.HomeWindow;
 
 import java.io.IOException;
@@ -20,10 +22,15 @@ public class Main {
 
             final WindowBasedTextGUI textGUI = new MultiWindowTextGUI(screen);
 
+            // Home Screen
             HomeWindow homeWindow = new HomeWindow("Home", Currency.getCurrencies());
             HomeController homeController = new HomeController(new User(), homeWindow);
             textGUI.addWindowAndWait(homeWindow);
-            //textGUI.addWindowAndWait(new window("lorem ipsum"));
+
+            // Currency Screen
+            CurrencyController currencyController;
+            CurrencyWindow currencyWindow = new CurrencyWindow("Currency");
+            textGUI.addWindowAndWait(currencyWindow);
         }
         catch (IOException e) {
             e.printStackTrace();
