@@ -11,6 +11,10 @@ public class User {
         this.favouriteCurrency = favouriteCurrency;
     }
 
+    public User() {
+
+    }
+
     public int getId() {
         return id;
     }

@@ -27,8 +27,11 @@ public class HomeWindow extends BasicWindow {
             String c = String.join(currency.getCode(), "-" + currency.getName());
             currencyList.addItem(c);
         }
+        contentPanel.addComponent(currencyList);
 
         send = new Button("Go on!").addTo(contentPanel);
+
+        this.setComponent(contentPanel);
     }
 
     public String getName(){
