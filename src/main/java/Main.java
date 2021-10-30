@@ -1,4 +1,4 @@
-import common.Currency;
+import common.CurrencyDefinitionProcess;
 import com.googlecode.lanterna.gui2.MultiWindowTextGUI;
 import com.googlecode.lanterna.gui2.WindowBasedTextGUI;
 import com.googlecode.lanterna.screen.Screen;
@@ -6,6 +6,7 @@ import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
 import controller.CurrencyController;
 import controller.HomeController;
 import model.User;
+import org.json.simple.parser.ParseException;
 import view.CurrencyWindow;
 import view.HomeWindow;
 
@@ -23,7 +24,7 @@ public class Main {
             final WindowBasedTextGUI textGUI = new MultiWindowTextGUI(screen);
 
             // Home Screen
-            HomeWindow homeWindow = new HomeWindow("Home", Currency.getCurrencies());
+            HomeWindow homeWindow = new HomeWindow("Home", CurrencyDefinitionProcess.getCurrencies());
             HomeController homeController = new HomeController(new User(), homeWindow);
             textGUI.addWindowAndWait(homeWindow);
 
@@ -32,7 +33,7 @@ public class Main {
             CurrencyWindow currencyWindow = new CurrencyWindow("Currency");
             textGUI.addWindowAndWait(currencyWindow);
         }
-        catch (IOException e) {
+        catch (IOException | ParseException e) {
             e.printStackTrace();
         }
         finally {

@@ -1,6 +1,6 @@
 package common;
 
-import model.FavouriteCurrency;
+import model.CurrencyDefinition;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -11,14 +11,14 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Currency {
-    static private List<FavouriteCurrency> currencies = readCurrencies();
+public class CurrencyDefinitionProcess {
+    static private List<CurrencyDefinition> currencies = readCurrencies();
 
-    private Currency(){
+    private CurrencyDefinitionProcess(){
 
     }
 
-    private static List<FavouriteCurrency> readCurrencies(){
+    private static List<CurrencyDefinition> readCurrencies(){
         JSONParser jsonParser = new JSONParser();
 
         try(FileReader reader = new FileReader("Resource/currencies.json")) {
@@ -27,12 +27,12 @@ public class Currency {
             JSONArray currencyList = (JSONArray) obj;
             System.out.println(currencyList);
 
-            List<FavouriteCurrency> favouriteCurrencies = new ArrayList<>();
+            List<CurrencyDefinition> favouriteCurrencies = new ArrayList<>();
             for (Object currency : currencyList) {
                 JSONObject cr = (JSONObject) currency;
-                FavouriteCurrency newCurrency =
-                        new FavouriteCurrency((String) cr.get("code"),(String) cr.get("name"));
-                favouriteCurrencies.add(newCurrency);
+                CurrencyDefinition newCurrencyDefinition =
+                        new CurrencyDefinition((String) cr.get("code"),(String) cr.get("name"));
+                favouriteCurrencies.add(newCurrencyDefinition);
             }
 
             return favouriteCurrencies;
@@ -42,19 +42,19 @@ public class Currency {
         }
     }
 
-    public static List<FavouriteCurrency> getCurrencies(){
+    public static List<CurrencyDefinition> getCurrencies(){
         return currencies;
     }
 
-    public static FavouriteCurrency getCurrencyFromSelectedItem(String selectedItem){
+    public static CurrencyDefinition getCurrencyFromSelectedItem(String selectedItem){
         String items[] = selectedItem.split("-");
         String code = items[0];
 
         return getCurrencyFromCode(code);
     }
 
-    public static FavouriteCurrency getCurrencyFromCode(String code){
-        for (FavouriteCurrency c : currencies) {
+    public static CurrencyDefinition getCurrencyFromCode(String code){
+        for (CurrencyDefinition c : currencies) {
             if (c.getCode().equals(code)) {
                 return c;
             }

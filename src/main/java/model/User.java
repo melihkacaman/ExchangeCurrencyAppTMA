@@ -3,12 +3,12 @@ package model;
 public class User {
     private int id;
     private String name;
-    private FavouriteCurrency favouriteCurrency;
+    private CurrencyDefinition currencyDefinition;
 
-    public User(int id, String name, FavouriteCurrency favouriteCurrency) {
+    public User(int id, String name, CurrencyDefinition currencyDefinition) {
         this.id = id;
         this.name = name;
-        this.favouriteCurrency = favouriteCurrency;
+        this.currencyDefinition = currencyDefinition;
     }
 
     public User() {
@@ -23,7 +23,7 @@ public class User {
         return name;
     }
 
-    public FavouriteCurrency getFavouriteCurrency() {
-        return favouriteCurrency;
+    public CurrencyDefinition getFavouriteCurrency() {
+        return currencyDefinition;
     }
 }

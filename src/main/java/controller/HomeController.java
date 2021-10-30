@@ -1,9 +1,9 @@
 package controller;
 
-import common.Currency;
+import common.CurrencyDefinitionProcess;
 import common.Session;
 import com.googlecode.lanterna.gui2.Button;
-import model.FavouriteCurrency;
+import model.CurrencyDefinition;
 import model.User;
 import view.HomeWindow;
 
@@ -25,9 +25,9 @@ public class HomeController {
         public void onTriggered(Button button) {
             String name = HomeController.this.homeWindow.getName();
             String favouriteCurrencyString = HomeController.this.homeWindow.getSelectedCurrency();
-            FavouriteCurrency favouriteCurrency = Currency.getCurrencyFromSelectedItem(favouriteCurrencyString);
+            CurrencyDefinition currencyDefinition = CurrencyDefinitionProcess.getCurrencyFromSelectedItem(favouriteCurrencyString);
 
-            User activeUser = new User(100,name,favouriteCurrency);
+            User activeUser = new User(100,name, currencyDefinition);
             Session.activeUser = activeUser;
 
             HomeController.this.homeWindow.close();

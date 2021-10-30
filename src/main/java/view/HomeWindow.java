@@ -1,7 +1,7 @@
 package view;
 
 import com.googlecode.lanterna.gui2.*;
-import model.FavouriteCurrency;
+import model.CurrencyDefinition;
 import java.util.List;
 
 public class HomeWindow extends BasicWindow {
@@ -10,7 +10,7 @@ public class HomeWindow extends BasicWindow {
     private Button send;
     private ComboBox<String> currencyList;
 
-    public HomeWindow(String title, List<FavouriteCurrency> currencies) {
+    public HomeWindow(String title, List<CurrencyDefinition> currencies) {
         super(title);
 
         Panel contentPanel = new Panel();
@@ -21,8 +21,8 @@ public class HomeWindow extends BasicWindow {
         contentPanel.addComponent(name);
         contentPanel.addComponent(new Label("Favourite Currency:"));
         currencyList = new ComboBox<String>();
-        for (FavouriteCurrency currency : currencies) {
-            String c = currency.getCode() + "-" + currency.getName();
+        for (CurrencyDefinition currencyDefinition : currencies) {
+            String c = currencyDefinition.getCode() + "-" + currencyDefinition.getName();
             currencyList.addItem(c);
         }
         contentPanel.addComponent(currencyList);

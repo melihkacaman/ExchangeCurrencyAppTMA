@@ -2,11 +2,11 @@ package model;
 
 import org.json.simple.JSONObject;
 
-public class FavouriteCurrency {
+public class CurrencyDefinition {
     private String code;
     private String name;
 
-    public FavouriteCurrency(String code, String name) {
+    public CurrencyDefinition(String code, String name) {
         this.code = code;
         this.name = name;
     }
