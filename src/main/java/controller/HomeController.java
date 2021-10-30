@@ -1,6 +1,9 @@
 package controller;
 
+import IO.Currency;
+import com.googlecode.lanterna.gui2.Button;
 import model.FavouriteCurrency;
+import model.User;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -11,38 +14,30 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class HomeController {
     private HomeWindow homeWindow;
+    private User modelUser;
 
 
-    public HomeController() {
-        // TODO: 10/29/2021 Use the view!
+    public HomeController(User theModel, HomeWindow theView) {
 
+        homeWindow = theView;
+        modelUser = theModel;
+
+        homeWindow.addActionListener(new GoOnListener());
     }
 
-    private List<FavouriteCurrency> readCurrencies(){
-        JSONParser jsonParser = new JSONParser();
+    class GoOnListener implements Button.Listener{
+        @Override
+        public void onTriggered(Button button) {
+            String name = HomeController.this.homeWindow.getName();
+            String favouriteCurrencyString = HomeController.this.homeWindow.getSelectedCurrency();
+            FavouriteCurrency favouriteCurrency = Currency.getCurrencyFromSelectedItem(favouriteCurrencyString);
 
-        try(FileReader reader = new FileReader("Resource/currencies.json")) {
-            Object obj = jsonParser.parse(reader);
-
-            JSONArray currencyList = (JSONArray) obj;
-            System.out.println(currencyList);
-
-            List<FavouriteCurrency> favouriteCurrencies = new ArrayList<>();
-            for (Object currency : currencyList) {
-                JSONObject cr = (JSONObject) currency;
-                FavouriteCurrency newCurrency =
-                        new FavouriteCurrency((String) cr.get("code"),(String) cr.get("name"));
-                favouriteCurrencies.add(newCurrency);
-            }
-
-            return favouriteCurrencies;
-
-        } catch (IOException | ParseException e) {
-            return null;
+            User activeUser = new User(100,name,favouriteCurrency);
+            System.out.println("User is registered.");
         }
     }
-
 }
