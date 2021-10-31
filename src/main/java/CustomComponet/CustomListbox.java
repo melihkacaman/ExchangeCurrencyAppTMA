@@ -13,6 +13,7 @@ public class CustomListbox extends Panel {
         this.datasource = datasource;
         this.setLayoutManager(new LinearLayout());
         //this.setPreferredSize(new TerminalSize(40,2));
+        fillListBox();
     }
 
     private void fillListBox(){

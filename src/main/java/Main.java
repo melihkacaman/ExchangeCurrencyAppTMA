@@ -3,6 +3,7 @@ import com.googlecode.lanterna.gui2.MultiWindowTextGUI;
 import com.googlecode.lanterna.gui2.WindowBasedTextGUI;
 import com.googlecode.lanterna.screen.Screen;
 import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
+import common.Session;
 import controller.CurrencyController;
 import controller.HomeController;
 import model.User;
@@ -29,9 +30,9 @@ public class Main {
             textGUI.addWindowAndWait(homeWindow);
 
             // Currency Screen
-            CurrencyController currencyController;
-            CurrencyWindow currencyWindow = new CurrencyWindow("Currency");
-            textGUI.addWindowAndWait(currencyWindow);
+            CurrencyController currencyController =
+                    new CurrencyController(Session.activeUser.getFavouriteCurrency().getCode());
+            textGUI.addWindowAndWait(currencyController.getTheView());
         }
         catch (IOException | ParseException e) {
             e.printStackTrace();
