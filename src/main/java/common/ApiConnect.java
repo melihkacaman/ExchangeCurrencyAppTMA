@@ -51,7 +51,8 @@ public class ApiConnect {
     public static List<String> getBunchOfCurrencies(String from, String[] currencies) throws IOException, ParseException {
         List<String> result = new ArrayList<>();
         for (String curr : currencies) {
-            result.add(" " + makeRequest(from, curr).getCurr());
+            Currency res = makeRequest(from, curr);
+            result.add(res.getCode() + " " + res.getCurr());
         }
 
         return result;

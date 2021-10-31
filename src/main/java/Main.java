@@ -23,6 +23,7 @@ public class Main {
             screen.startScreen();
 
             final WindowBasedTextGUI textGUI = new MultiWindowTextGUI(screen);
+            Session.textGui = textGUI;
 
             // Home Screen
             HomeWindow homeWindow = new HomeWindow("Home", CurrencyDefinitionProcess.getCurrencies());

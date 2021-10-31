@@ -22,4 +22,10 @@ public class CustomListbox extends Panel {
             this.addComponent(idx, new Label(item));
         }
     }
+
+    public void updateListBox(List<String> newDatasource){
+        datasource = newDatasource;
+        this.removeAllComponents();
+        fillListBox();
+    }
 }

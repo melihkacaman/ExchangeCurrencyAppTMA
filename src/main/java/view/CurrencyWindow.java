@@ -46,4 +46,8 @@ public class CurrencyWindow extends BasicWindow {
     public void addActionToRefresh(Button.Listener listener){
         refreshButton.addListener(listener);
     }
+
+    public void notifyCurrencyListBox(List<String> newDatasource){
+        this.currenciesListbox.updateListBox(newDatasource);
+    }
 }

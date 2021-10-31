@@ -1,5 +1,6 @@
 package common;
 
+import com.googlecode.lanterna.gui2.WindowBasedTextGUI;
 import model.User;
 
 public class Session {
@@ -8,4 +9,5 @@ public class Session {
     }
 
     public static User activeUser;
+    public static WindowBasedTextGUI textGui;
 }
